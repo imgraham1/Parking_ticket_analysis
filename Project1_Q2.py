@@ -28,17 +28,3 @@ avg = (rdd.mapValues(lambda x: (x, 1)).reduceByKey(lambda x, y: (x[0]+y[0], x[1]
 avg.collect()
 avg = avg.sortBy(lambda x: x[1], False)
 avg.saveAsTextFile("Project1AvgPRCPPerTicketType")
-
-rdd = q5.rdd.map(tuple)
-rdd = rdd.mapValues(lambda x: float(x))
-avg = (rdd.mapValues(lambda x: (x, 1)).reduceByKey(lambda x, y: (x[0]+y[0], x[1]+y[1])).mapValues(lambda x: float(x[0])/x[1]))
-avg.collect()
-avg = avg.sortBy(lambda x: x[1], False)
-avg.saveAsTextFile("Project1AvgSNOWPerTicketType")
-
-rdd = q6.rdd.map(tuple)
-rdd = rdd.mapValues(lambda x: float(x))
-avg = (rdd.mapValues(lambda x: (x, 1)).reduceByKey(lambda x, y: (x[0]+y[0], x[1]+y[1])).mapValues(lambda x: float(x[0])/x[1]))
-avg.collect()
-avg = avg.sortBy(lambda x: x[1], False)
-avg.saveAsTextFile("Project1AvgTAVGPerTicketType")
